@@ -1,0 +1,96 @@
+<UserControl x:Class="AIBoundary.Modules.WorkerModule"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="#EAF4FF">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel MaxWidth="920" Margin="24" HorizontalAlignment="Center">
+
+                <TextBlock x:Name="TitleT" Style="{StaticResource TitleText}" HorizontalAlignment="Left"
+                           TextAlignment="Left" Margin="0"/>
+                <TextBlock x:Name="SubT" Style="{StaticResource SubtitleText}" HorizontalAlignment="Left"
+                           TextAlignment="Left"/>
+
+                <!-- ফর্ম -->
+                <Border Background="White" CornerRadius="16" BorderBrush="#BBD7F5" BorderThickness="1"
+                        Padding="22,18" Margin="0,6,0,16">
+                    <StackPanel>
+                        <TextBlock x:Name="EditT" FontSize="14" FontWeight="Bold" Foreground="#E65100"
+                                   Margin="0,0,0,6" Visibility="Collapsed"/>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,8,0">
+                                <TextBlock x:Name="LblName" Style="{StaticResource FieldLabel}" Margin="2,0,0,6"/>
+                                <Border Style="{StaticResource FieldBorder}">
+                                    <TextBox x:Name="NameBox" Style="{StaticResource BareTextBox}" MaxLength="60"/>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Grid.Row="0" Grid.Column="1" Margin="8,0,0,0">
+                                <TextBlock x:Name="LblCode" Style="{StaticResource FieldLabel}" Margin="2,0,0,6"/>
+                                <Border Style="{StaticResource FieldBorder}">
+                                    <TextBox x:Name="CodeBox" Style="{StaticResource BareTextBox}" MaxLength="30"/>
+                                </Border>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,8,0">
+                                <TextBlock x:Name="LblSection" Style="{StaticResource FieldLabel}"/>
+                                <Border Style="{StaticResource FieldBorder}">
+                                    <TextBox x:Name="SectionBox" Style="{StaticResource BareTextBox}" MaxLength="40"/>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Grid.Column="1" Margin="8,0,0,0">
+                                <TextBlock x:Name="LblDept" Style="{StaticResource FieldLabel}"/>
+                                <Border Style="{StaticResource FieldBorder}">
+                                    <TextBox x:Name="DeptBox" Style="{StaticResource BareTextBox}" MaxLength="40"/>
+                                </Border>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="2" Grid.Column="0" Margin="0,0,8,0">
+                                <TextBlock x:Name="LblIdNum" Style="{StaticResource FieldLabel}"/>
+                                <Border Style="{StaticResource FieldBorder}">
+                                    <TextBox x:Name="IdNumBox" Style="{StaticResource BareTextBox}" MaxLength="40"/>
+                                </Border>
+                            </StackPanel>
+                        </Grid>
+
+                        <TextBlock x:Name="LblPhotos" FontSize="14" FontWeight="Bold" Foreground="#0D2F55" Margin="2,18,0,2"/>
+                        <TextBlock x:Name="TipT" FontSize="12" Foreground="#4A6A8A" TextWrapping="Wrap" Margin="2,0,0,10"/>
+                        <WrapPanel x:Name="PhotoPanel"/>
+
+                        <ProgressBar x:Name="Prog" Height="6" IsIndeterminate="True" Visibility="Collapsed" Margin="0,8,0,0"/>
+                        <TextBlock x:Name="StatusT" FontSize="13" FontWeight="SemiBold" TextWrapping="Wrap"
+                                   Margin="2,10,0,0" Visibility="Collapsed"/>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,14,0,0">
+                            <Button x:Name="BtnSave" Style="{StaticResource PrimaryButton}" Height="44" MinWidth="200"
+                                    Padding="18,0" Click="BtnSave_Click"/>
+                            <Button x:Name="BtnCancelEdit" Style="{StaticResource PillButton}" Margin="12,0,0,0"
+                                    Visibility="Collapsed" Click="BtnCancelEdit_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <!-- তালিকা -->
+                <DockPanel Margin="2,0,0,8">
+                    <Border DockPanel.Dock="Right" Style="{StaticResource FieldBorder}" Width="260" Height="38">
+                        <TextBox x:Name="SearchBox" Style="{StaticResource BareTextBox}" TextChanged="SearchBox_TextChanged"/>
+                    </Border>
+                    <TextBlock x:Name="ListT" FontSize="16" FontWeight="Bold" Foreground="#0D2F55"
+                               VerticalAlignment="Center"/>
+                </DockPanel>
+                <StackPanel x:Name="ListHost"/>
+                <TextBlock x:Name="EmptyT" FontSize="14" Foreground="#4A6A8A" Margin="2,0,0,0"/>
+                <TextBlock x:Name="MoreT" FontSize="12" Foreground="#4A6A8A" Margin="2,6,0,0"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>
